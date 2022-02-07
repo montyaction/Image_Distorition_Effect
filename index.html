@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Distorition Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animo.js/1.0.3/animo.min.js"
+        integrity="sha512-gwU+BrgcnIXRzsV3HDRIjQb/W//cOuuw6CH0CxInLzrRHCeugXcWBQthf3cHIJuivNNy5gT4fgZhnPaQILk33w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        let container = document.querySelector('.container');
+
+        for (var i = 0; i<=400; i++) {
+            
+            let block = document.createElement('div');
+            
+            block.classList.add('block');
+
+            container.appendChild(block);
+        }
+
+        let block = document.querySelectorAll('.block');
+        let animation = anime.timeline({
+            targets: block,
+            easing: 'easeInOutExpo',
+            loop: true,
+        })
+        console.log('I am working')
+
+        animation
+        .add({
+            scale: 0,
+            translateX: function(){ return anime.random(-360, 2100);},
+            translateY: function(){ return anime.random(-360, 2100);},
+            rotate: function(){ return anime.random(-360, 360);},
+            duration: function(){ return anime.random(500, 3000);},
+        })
+    </script>
+</body>
+</html>
