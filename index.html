@@ -11,19 +11,16 @@
 
     <div class="container"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animo.js/1.0.3/animo.min.js"
-        integrity="sha512-gwU+BrgcnIXRzsV3HDRIjQb/W//cOuuw6CH0CxInLzrRHCeugXcWBQthf3cHIJuivNNy5gT4fgZhnPaQILk33w=="
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+        integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <script>
         let container = document.querySelector('.container');
 
         for (var i = 0; i<=400; i++) {
-            
             let block = document.createElement('div');
-            
             block.classList.add('block');
-
             container.appendChild(block);
         }
 
@@ -32,6 +29,7 @@
             targets: block,
             easing: 'easeInOutExpo',
             loop: true,
+            delay: anime.stagger(10, {start:50}),
         })
         console.log('I am working')
 
@@ -39,9 +37,17 @@
         .add({
             scale: 0,
             translateX: function(){ return anime.random(-360, 2100);},
-            translateY: function(){ return anime.random(-360, 2100);},
+            translateY: function(){ return anime.random(-360, -2100);},
             rotate: function(){ return anime.random(-360, 360);},
             duration: function(){ return anime.random(500, 3000);},
+        })
+
+        .add({
+            scale: 1,
+            translateX: 0,
+            translateY: 0,
+            rotate: 0,
+            duration: function(){ return anime.random(500, 3000);}
         })
     </script>
 </body>
